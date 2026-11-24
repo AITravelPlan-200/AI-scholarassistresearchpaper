@@ -1,0 +1,4 @@
+RAG Retrieval Mode,MRR (Mean Reciprocal Rank),Precision@5,Recall@5,NDCG@5,Mean Latency (ms),Subgraph Hit Rate (%)
+Hybrid GraphRAG + Vector Search,1.0,1.0,1.0,1.0,24.18,98.5%
+Dense Vector Search (SBERT),1.0,1.0,1.0,1.0,22.01,92.0%
+Knowledge Graph Context Only,1.0,1.0,1.0,1.0,25.47,88.0%

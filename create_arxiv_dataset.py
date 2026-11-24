@@ -8,7 +8,7 @@ base_url = "http://export.arxiv.org/api/query?"
 search_query = "all:machine learning"
 start = 0
 max_results = 100
-total_papers = 2000 # total dataset size you want
+total_papers = 2500 # total dataset size you want
 
 papers = []
 

@@ -1,75 +1,36 @@
-import streamlit as st
+"""
+app.py – Hugging Face Spaces & Production Entrypoint for Scholar Assist AI Dashboard
+
+Launches the unified Scholar Assist AI research assistant platform with:
+- Objective 1: Citational Knowledge Graph (GraphRAG)
+- Objective 2: Context-Aware RAG Engine (with strict dataset grounding & PDF citations)
+- Objective 3: Research Trends & Gaps Analysis
+- Objective 4: Dynamic System Evaluation Benchmark
+"""
+
 import os
-import tempfile
-from src.utils import upload_to_pinecone, extract_text_from_pdf, split_text
-from src.graph import app as graph_app
+import sys
 
-st.set_page_config(page_title="ResearchScholar_AI", page_icon="🎓", layout="wide")
+# Ensure current directory is on sys.path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
-st.title("🎓 ResearchScholar_AI")
-st.markdown("### Multi-Agent Parallel Research Audit")
+from dashboard import demo, get_rag_engine
 
-# --- Sidebar Configuration ---
-with st.sidebar:
-    st.header("Settings")
-    index_name = st.text_input("Pinecone Index", value="research-scholar")
-    if st.button("Clear Session"):
-        st.rerun()
+if __name__ == "__main__":
+    print("Pre-initializing Context-Aware RAG Engine ...", flush=True)
+    try:
+        get_rag_engine()
+    except Exception as e:
+        print(f"[Notice] RAG Engine pre-init notice: {e}", flush=True)
 
-# --- File Upload Section ---
-uploaded_file = st.file_uploader("Drag and drop your research paper (PDF)", type="pdf")
+    server_port = int(os.environ.get("PORT", os.environ.get("GRADIO_SERVER_PORT", 7860)))
+    server_name = os.environ.get("GRADIO_SERVER_NAME", "0.0.0.0")
 
-if uploaded_file is not None:
-    # 1. Save uploaded file temporarily
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
-        tmp_file.write(uploaded_file.getvalue())
-        tmp_path = tmp_file.name
-
-    if st.button("🚀 Analyze Paper"):
-        with st.status("Processing Paper...", expanded=True) as status:
-            # Milestone 1: Ingestion
-            st.write("Reading PDF and Vectorizing...")
-            text = extract_text_from_pdf(tmp_path)
-            chunks = split_text(text)
-            upload_to_pinecone(chunks, index_name)
-            
-            # Milestone 2 & 3: Multi-Agent Analysis
-            st.write("Triggering 4 Parallel Agents via Groq...")
-            # We fetch context just like in main.py but for the UI
-            from main import get_paper_context
-            context = get_paper_context(index_name)
-            
-            initial_state = {
-                "paper_context": context,
-                "research_summary": [],
-                "methodology_critique": [],
-                "citation_audit": [],
-                "trend_analysis": [],
-                "final_compiled_report": ""
-            }
-            
-            final_output = graph_app.invoke(initial_state)
-            status.update(label="Analysis Complete!", state="complete", expanded=False)
-
-        # --- Display Results ---
-        st.success("Analysis Finished!")
-        
-        # Display Executive Audit prominently
-        st.subheader("🏁 Executive Audit")
-        st.info(final_output['final_compiled_report'])
-        
-        # Display Specialist tabs
-        st.subheader("🔬 Detailed Specialist Reports")
-        tabs = st.tabs(["Analyst", "Methodology", "Citations", "Trends"])
-        
-        with tabs[0]:
-            st.write(final_output['research_summary'][0])
-        with tabs[1]:
-            st.write(final_output['methodology_critique'][0])
-        with tabs[2]:
-            st.write(final_output['citation_audit'][0])
-        with tabs[3]:
-            st.write(final_output['trend_analysis'][0])
-
-    # Cleanup temp file
-    os.remove(tmp_path)
+    print(f"Launching Scholar Assist AI Dashboard on {server_name}:{server_port} ...", flush=True)
+    demo.launch(
+        server_name=server_name,
+        server_port=server_port,
+        share=False
+    )

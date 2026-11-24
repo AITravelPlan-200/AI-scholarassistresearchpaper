@@ -1,0 +1,11 @@
+Topic ID,Topic Title,Top Keywords,Paper Count,Mean Topic Weight
+Topic_1,"Topic 1: learning, machine, model","learning, machine, model, algorithm, data, application, research, deep",459,0.1731
+Topic_2,"Topic 2: gradient, function, stochastic","gradient, function, stochastic, learning, descent, loss, convergence, network",35,0.0272
+Topic_3,"Topic 3: learning, data, model","learning, data, model, training, machine, network, method, approach",454,0.1609
+Topic_4,"Topic 4: model, learning, network","model, learning, network, machine, data, neural, deep, patient",165,0.0717
+Topic_5,"Topic 5: model, machine, method","model, machine, method, learning, prediction, using, feature, uncertainty",227,0.0948
+Topic_6,"Topic 6: feature, kernel, learning","feature, kernel, learning, model, machine, method, language, representation",73,0.0394
+Topic_7,"Topic 7: adversarial, attack, machine","adversarial, attack, machine, learning, robustness, tensor, security, model",49,0.0303
+Topic_8,"Topic 8: learning, machine, model","learning, machine, model, data, research, paper, application, method",322,0.1267
+Topic_9,"Topic 9: learning, data, method","learning, data, method, causal, model, machine, distribution, inference",242,0.1002
+Topic_10,"Topic 10: learning, algorithm, problem","learning, algorithm, problem, method, task, optimization, model, approach",470,0.1757

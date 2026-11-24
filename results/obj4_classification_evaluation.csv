@@ -1,0 +1,5 @@
+Algorithm,Accuracy,Precision,Recall,F1 Score,ROC-AUC,Train Latency (ms)
+SVM (LinearSVC),0.6348,0.6154,0.65,0.6075,0.6697,104.29
+Logistic Regression,0.6957,0.5017,0.6957,0.5807,0.7254,225.0
+Random Forest,0.6783,0.714,0.6804,0.5704,0.6459,8882.55
+Naïve Bayes,0.6891,0.4785,0.6891,0.5648,0.6412,26.3

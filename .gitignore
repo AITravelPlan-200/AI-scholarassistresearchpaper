@@ -37,3 +37,8 @@ htmlcov/
 .dmypy.json
 dmypy.json
 .pyre/
+for_her/
+girlfriend_website/
+scratch/
+*.log
+

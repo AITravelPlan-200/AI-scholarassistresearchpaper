@@ -1,4 +1,17 @@
-# ResearchScholar_AI: Automated Research Paper Analysis System
+---
+title: Scholar Assist AI
+emoji: 📚
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+sdk_version: 4.44.1
+app_file: app.py
+pinned: false
+license: mit
+short_description: Intelligent research assistance platform with GraphRAG & Context-Aware RAG.
+---
+
+# Scholar Assist AI: Academic Research Intelligence Platform
 
 An AI-powered system designed to automate the synthesis and evaluation of academic research papers. By leveraging a multi-agent framework powered by LangChain and LangGraph, ResearchScholar_AI improves the efficiency of literature reviews and ensures precise understanding of complex methodologies and results.
 

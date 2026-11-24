@@ -1,48 +1,34 @@
-# Project Dependencies
-# Install with: pip install -r requirements.txt
+# Scholar Assist AI - Project Dependencies
+# Suitable for Local and Hugging Face Spaces Deployment
 
 # Core LLM & Groq Integration
 langchain-groq>=0.2.0
-# Keep these as they are core to your logic
 langchain>=0.3.0
 langgraph>=0.1.0
-python-dotenv==1.0.0
+python-dotenv>=1.0.0
 
-# Vector Database
+# Vector Database & Document Processing
 pinecone>=5.0.0
-
-# Document Processing & Parsing
-PyPDF2==3.0.1
-python-docx==0.8.11
+PyPDF2>=3.0.0
+python-docx>=0.8.11
 
 # User Interface
+gradio>=4.44.0
 streamlit>=1.35.0
-gradio>=4.0.0
 
-# LangChain Extras (for multi-agent pipeline)
-langchain-huggingface
-langchain-text-splitters
+# Multi-Agent Pipeline Extras
+langchain-huggingface>=0.0.1
+langchain-text-splitters>=0.0.1
 
-# Data Processing
-pandas>=2.2.0
-numpy>=2.0.0
+# Data Science & Machine Learning
+pandas>=2.0.0
+numpy>=1.24.0
 matplotlib>=3.7.0
 scikit-learn>=1.3.0
 sentence-transformers>=2.2.0
 joblib>=1.3.0
 umap-learn>=0.5.0
+networkx>=3.0
 
-# HTTP & API
-requests==2.31.0
-
-# Testing
-pytest==7.3.0
-pytest-cov==4.1.0
-
-# Code Quality
-black==23.3.0
-flake8==6.0.0
-pylint==2.17.0
-
-# Environment Management
-python-dotenv==1.0.0
+# Network & Utilities
+requests>=2.28.0
